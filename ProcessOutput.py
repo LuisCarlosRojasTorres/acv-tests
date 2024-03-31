@@ -7,18 +7,23 @@ pose = mpPose.Pose()
 mpDraw = mp.solutions.drawing_utils
 
 pathMedia='./media/'
-inputFileName='biceps_errado.mp4'
+inputFileName='puxada.mp4'
+#inputFileName='puxada_wrong.mp4'
+#inputFileName='rosca_direta.mp4'
+#inputFileName='rosca_direta_wrong.mp4'
+#inputFileName='stiff.mp4'
+#inputFileName='stiff_wrong.mp4'
 
 cap = cv2.VideoCapture(pathMedia+inputFileName)
+#cap = cv2.VideoCapture(0) #0 or 1 is for WEBCAM this is HW dependant
 
 #Getting resolution
 frame_width = int(cap.get(3))
 frame_height = int(cap.get(4)) 
 size = (frame_width, frame_height) 
 
-print(' - Width: ' + str(frame_width))
-print(' - Height: ' + str(frame_height))
-#cap = cv2.VideoCapture(0) #0 or 1 is for WEBCAM this is HW dependant
+print(' - Video Source Width: ' + str(frame_width))
+print(' - Video Source Height: ' + str(frame_height))
 
 outputVideo = cv2.VideoWriter('./outputMedia/AR_'+inputFileName, cv2.VideoWriter_fourcc(*'MP4V'), 20.0, size)
 
