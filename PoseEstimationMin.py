@@ -7,7 +7,7 @@ pose = mpPose.Pose()
 mpDraw = mp.solutions.drawing_utils
 
 cap = cv2.VideoCapture('./media/vid03b.mp4')
-#cap = cv2.VideoCapture(0) #0 or 1 is for WEBCAM this is hardware dependant
+#cap = cv2.VideoCapture(0) #0 or 1 is for WEBCAM this is HW dependant
 previousTime = 0
 currentTime = 0
 
