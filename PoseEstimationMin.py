@@ -6,8 +6,8 @@ mpPose = mp.solutions.pose
 pose = mpPose.Pose()
 mpDraw = mp.solutions.drawing_utils
 
-#cap = cv2.VideoCapture('vid03b.mp4')
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture('./media/vid03b.mp4')
+#cap = cv2.VideoCapture(0) #0 or 1 is for WEBCAM this is hardware dependant
 previousTime = 0
 currentTime = 0
 
@@ -17,7 +17,6 @@ while True:
     results = pose.process(imgRGB)
 
     if results.pose_landmarks:
-        #mpDraw.draw_landmarks(img, andLms, mpHands.HAND_CONNECTIONS)
         mpDraw.draw_landmarks(img, results.pose_landmarks, mpPose.POSE_CONNECTIONS)
 
     currentTime = time.time()
