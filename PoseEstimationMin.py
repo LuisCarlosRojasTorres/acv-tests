@@ -29,7 +29,10 @@ frame_height = int(0.9*cap.get(4))
 previousTime = 0
 currentTime = 0
 
-while True:
+angle_min=180
+angle_max=0
+
+while cap.isOpened():
     success, img = cap.read()
     imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     results = pose.process(imgRGB)
@@ -45,12 +48,15 @@ while True:
 
         # Calculate angle
         angle = calculate_angle(shoulder, elbow, wrist)
-            
-            # Visualize angle
-        cv2.putText(img, "Angle: " + str(angle), 
-                    (10,frame_height), 
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA
-                    )
+        if angle >  angle_max:
+            angle_max = angle
+        if angle < angle_min:
+            angle_min = angle
+
+        # Visualize angle
+        cv2.putText(img, "Angle: " + str(round(angle,1)), (10,frame_height), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA)
+        cv2.putText(img, "Angle Min: " + str(round(angle_min,1)), (10,frame_height+20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA)
+        cv2.putText(img, "Angle Max: " + str(round(angle_max,1)), (10,frame_height+40), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA)
 
     currentTime = time.time()
     fps = 1/(currentTime - previousTime)
