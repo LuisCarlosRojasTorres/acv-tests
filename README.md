@@ -1,7 +1,7 @@
 # acv-tests
 Advanced Computer Vision tests
 
-- [Manifest: Ideias e estrategias](/Manifest)
+- [Manifest: Ideias e estrategias](/Documentation/Manifest.md)
 
 ## Setup before running this for the first time
 1. Create a virtual environment: `python -m venv venv`
