@@ -19,3 +19,21 @@ flowchart TD
     B ---->|No| E[End]
 
 ```
+
+- The main application is a loop which iterates through each frame.
+
+``` mermaid
+stateDiagram-v2
+[*] --> Get_Frame
+Get_Frame --> [*] : Other frames
+
+Get_Frame --> Get_Landmarks : Each x frames 
+  Get_Landmarks --> [*] : Failed
+
+  Get_Landmarks --> Get_Points_and_Angles : Success
+    Get_Points_and_Angles --> Analyse_Results
+    Analyse_Results --> Show_Frame : Failed
+    Show_Frame --> [*]
+
+  Get_Points_and_Angles --> [*] : Failed  
+```

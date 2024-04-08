@@ -38,7 +38,7 @@ while True:
     results = pose.process(frameRGB)
     
     if results.pose_landmarks:
-        #mpDraw.draw_landmarks(frame, results.pose_landmarks, mpPose.POSE_CONNECTIONS)
+        mpDraw.draw_landmarks(frame, results.pose_landmarks, mpPose.POSE_CONNECTIONS)
         landmarks = results.pose_landmarks.landmark       
         
         # Get coordinates
