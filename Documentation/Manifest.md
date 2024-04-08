@@ -10,15 +10,7 @@
   - `<ExerciseName>Data.json`
     - Arquivo com valores minimos e maximos de ângulo e deslocamento dos pontos de interés para um exercicio determinado. 
 
-``` mermaid
-flowchart TD
-    A[Start: Reading ConfigFiles] --> B{ReadVideo}
-    B -- -->|Yes| C[OK]
-    C --> D[Rethink]
-    D --> B
-    B ---->|No| E[End]
-
-```
+## FSM
 
 - The main application is a loop which iterates through each frame.
 
@@ -31,8 +23,8 @@ Get_Frame --> Get_Landmarks : Each x frames
   Get_Landmarks --> [*] : Failed
 
   Get_Landmarks --> Get_Points_and_Angles : Success
-    Get_Points_and_Angles --> Analyse_Results
-    Analyse_Results --> Show_Frame : Failed
+    Get_Points_and_Angles --> Analyse_Results : Success
+    Analyse_Results --> Show_Frame 
     Show_Frame --> [*]
 
   Get_Points_and_Angles --> [*] : Failed  
