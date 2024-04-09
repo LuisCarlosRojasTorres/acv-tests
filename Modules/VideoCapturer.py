@@ -7,9 +7,13 @@ mpPose = mp.solutions.pose
 pose = mpPose.Pose()
 mpDraw = mp.solutions.drawing_utils
 
-cap = cv2.VideoCapture('./media/rosca_direta.mp4')
+videoSource = './media/rosca_direta.mp4'
+
+
+cap = cv2.VideoCapture(videoSource)
 #cap = cv2.VideoCapture(0) #0 or 1 is for WEBCAM this is HW dependant
 #Getting resolution
+
 frame_width = int(cap.get(3))
 frame_height = int(cap.get(4)) 
 
@@ -33,3 +37,28 @@ while True:
 
     cv2.imshow("Image", frame)
     cv2.waitKey(1)
+
+
+class VideoCapturer:
+    
+    def __init__(self):
+        self.capture=cv2.VideoCapture(videoSource)
+        self.frame_width = int(cap.get(3))
+        self.frame_height = int(cap.get(4)) 
+
+    def getCapture(self):
+        return self.capture
+
+    def getWidth(self):
+        return self.frame_width
+    
+    def getHeight(self):
+        return self.frame_height
+    
+    def ReadCapture(self):
+        return self.capture.read()
+    
+#class Landmarker:
+
+    
+
